@@ -12,7 +12,7 @@
 ## Introduction
 
 The office code of [Landslide susceptibility mapping and dynamic response along the Sichuan-Tibet transportation corridor using deep learning algorithms](https://doi.org/10.1016/j.catena.2022.106866).
-
+ 
 The current branch has been tested under PaddlePaddle 2.x and CUDA 10.2, supports Python 3.8+, and is compatible with most CUDA versions.
 
 ### Dependencies
