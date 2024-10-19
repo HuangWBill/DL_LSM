@@ -12,15 +12,15 @@
 
 <div>
     <h4 align="center">
-        This repository is an official implementation of  <a href="https://doi.org/10.1016/j.catena.2022.106866" target='_blank'>[Paper]</a> <a href="https://github.com/HuangWBill/SVM-LSM-Toolbox/blob/master/paper.pdf" target='_blank'>[PDF]</a>
+        This repository is an official implementation of  <a href="https://doi.org/10.1016/j.catena.2022.106866" target='_blank'>[Paper]</a> <a href="https://github.com/HuangWBill/DL-LSM/blob/master/paper.pdf" target='_blank'>[PDF]</a>
     </h4>
 </div>
 
 </div>
 
-![img](./other/01.png)
+![img](./figures/01.png)
 
-![img](./other/02.png)
+![img](./figures/02.jpg)
 ___________
 
 ## Table of Contents
@@ -69,17 +69,17 @@ python main_use_txt.py
 
 ## Results
 > Landslide susceptibility maps (Global prediction) obtained from Conv-SE-LSTM model along the Sichuan-Tibet transportation corridor
-![img](./other/03.png)
+![img](./figures/03.png)
 
 > Landslide susceptibility maps (Zone prediction) obtained from Conv-SE-LSTM model along the Sichuan-Tibet transportation corridor
-![img](./other/04.png)
+![img](./figures/04.png)
 
 > Variation of the landslide susceptibility index under different NDVI and rainfall conditions: (a) 2011; and (b) 2016.
-![img](./other/05.jpg)
+![img](./figures/05.jpg)
 
 > Comparison of the robustness of different models: (a) SVM; (b) CNN; (c) LSTM; (d) Conv-SE-LSTM. Note: ② Minjiang-Dadu River Basin; ③ Ya-lung River 
 Basin; ④ Jinsha River Basin; ⑤ Salween-Lancang River Basin; and ⑥ Brahmaputra River Basin. 
-![img](./other/06.png)
+![img](./figures/06.png)
 
 > Table 1. Performance of the four models along the Sichuan-Tibet transportation corridor. 
 <table>
