@@ -12,7 +12,7 @@
 
 <div>
     <h4 align="center">
-        This repository is an official implementation of  <a href="https://doi.org/10.1016/j.catena.2022.106866" target='_blank'>[Paper]</a> <a href="https://github.com/HuangWBill/DL-LSM/blob/master/paper.pdf" target='_blank'>[PDF]</a>
+        This repository is an official implementation of  <a href="https://doi.org/10.1016/j.catena.2022.106866" target='_blank'>[Paper]</a> <a href="https://github.com/HuangWBill/DL_LSM/blob/main/paper.pdf" target='_blank'>[PDF]</a>
     </h4>
 </div>
 
