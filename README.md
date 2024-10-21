@@ -56,11 +56,7 @@ ___________
 - scikit-learn
 
 ## Usage
-```shell
-cd /Common_use/
-python main_use.py
-```
-or
+If you need factor layer data processing and dataset generation operations, please refer to our other work: [An Efficient User Friendly Integration Tool for Landslide Susceptibility Mapping Based on Support Vector Machines: SVM-LSM Toolbox](https://github.com/HuangWBill/SVM-LSM-Toolbox)
 ```shell
 cd /Common_use/
 python main_use_txt.py
