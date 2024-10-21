@@ -1,41 +1,8 @@
 ######################################每一个“=”后面必须加一个空格##########################################
-######################################因子筛选##########################################
-# 研究区所有因子数据层的名称
-name = ['dem', 'slp', 'asp', 'cur','plancur','profilecur','faults', 'rivers','roads','lithology','SroughnessC','qifudu','NDVI','TWI','rainfall']
-#按照name顺序输入所有因子层的最小值
-min = [200, 0, -1, -19.923939, 0, 0, 0, 0, 0, 1, 1, 0, -0.9977095, -1.1832262, 296.6105]
-#按照name顺序输入所有因子层的最大值
-max = [8589, 89.451454, 359.99115, 23.270359, 81.51814, 58.136696, 47589.84, 126882.58, 115193.0, 9, 104.45102, 6275, 0.95180815, 28.639105, 2474.542]
-# 按照name顺序输入所有因子层的NoData值
-NoData = [-32768, -3.40282306074e+038, -3.40282306074e+038, -3.40282306074e+038, -3.40282306074e+038, -3.40282306074e+038,-3.40282306074e+038,-3.40282306074e+038,-3.40282306074e+038,-3.40282306074e+038,-3.40282306074e+038,-2147483648,-3.40282306074e+038,-3.40282306074e+038,-3.40282306074e+038]
-# 研究区各因子层存放的根目录（研究区大范围）
-factors_root_path = "F:\python_projects\chuanzang_landslide\chuanzang_process\chuanzang_big_factors"
-# 皮尔逊相关系数和IGR计算结果存放路径
-PCC_IGR_path = 'E:\python_projects\chuanzang_comparison\changdu-linzhi'
-# 是否需要绘制热力图（y or n）
-heatmap = 'y'
-# 裁剪后的各数据的矩形因子层所在文件夹目录
-factor_path = "F:/fenlei\chuanzang_creep_landslides\landslide_factors"
-# 滑坡与非滑坡数据集影像存放根目录
-old_dataset_path = "F:/fenlei\chuanzang_creep_landslides\landslide_dataset\dataset"
-# 滑坡点总数和测试集比例
-landslide_point_num,rate = 119,0.3
-# 是否需要绘制IGR图（y or n）
-IGR_plt = 'y'
-
-######################################筛选后更新数据##########################################
-#存放因子数据层的名称降雨量，距河流的距离，剖面曲率，平面曲率，距道路的距离，岩性，距断层的距离，TWI，坡向，坡度，曲率
-new_name = ['rainfall','rivers','profilecur','plancur','roads','lithology', 'faults','TWI', 'asp','slp','cur']
-#按照name顺序输入所有因子层的最小值
-new_min = [296.6105,0, 0, 0, 0,1,0,-1.1832262,-1,0,-19.923939]
-#按照name顺序输入所有因子层的最大值
-new_max = [2474.542,126882.58, 58.136696,81.51814,115193.0,9,47589.84,28.639105,359.99115,89.451454,23.270359]
-# 因子层需要保留的行列最大最小值（h:行,l:列）
-h_min,h_max, l_min,l_max = [1,15048,1,45890]
-# 筛选后数据集存放根目录
+# 数据集存放根目录
 new_dataset_path = "F:/fenlei\chuanzang_creep_landslides\landslide_dataset\IGR_dataset"
-# 筛选后用来预测的影像存放位置
-predict_path = "F:\python_projects\chuanzang_landslide\chuanzang_landslide_dataset\predict"
+# 用来预测的多通道影像存放位置
+predict_path = "F:\python_projects\chuanzang_landslide\chuanzang_landslide_dataset\predict\Factors_new_Mapping.tif"
 
 ######################################模型训练，参数调优##########################################
 # 分块行大小
@@ -46,7 +13,7 @@ col_size = 8
 channel = 11
 # 模型保存路径
 model_save_dir = "F:/fenlei\chuanzang_creep_landslides\landslide_dataset\model"
-# 模型类型：SVM，MLP，CNN2D，CNN3D，LSTM，Conv-LSTM/Conv-Attention-LSTM
+# 模型类型：SVM，CNN2D，LSTM，Conv-SE-LSTM
 model = 'Conv-SE-LSTM'
 
 #########SVM参数###############
@@ -61,30 +28,20 @@ buf_size = [500, 600, 650, 700, 750, 800, 900, 1000]
 # 学习率大小
 learning_rate = 0.0001
 
-#########MLP参数###############
-# 隐藏层设置
-MLP_h1_size,MLP_drop1,MLP_h2_size,MLP_drop2,MLP_h3_size,MLP_drop3 = 650,0.5,250,0.5,80,0.5
-
 #########CNN2D参数###############
 # 隐藏层设置
 CNN2D_conv_num1,CNN2D_drop1,CNN2D_conv_num2,CNN2D_drop2,CNN2D_fc,CNN2D_drop3 = 64,0.5,132,0.5,350,0.5
-
-#########CNN3D参数###############
-# 隐藏层设置
-CNN3D_conv_num1,CNN3D_conv_num2,CNN3D_fc,CNN3D_drop = 12,24,150,0.5
 
 #########LSTM参数###############
 # 隐藏层设置
 LSTM_h_size,LSTM_h_layer,LSTM_fc_size,LSTM_drop_size = 20,2,200,0.5
 
-#########Conv-Attention-LSTM参数###############
+#########Conv-SE-LSTM参数###############
 # 隐藏层设置，convLSTM_conv_num:分组卷积，每个通道使用的卷积层个数
 convLSTM_conv_num,convLSTM_h_size,convLSTM_h_layer,convLSTM_fc_size,convLSTM_drop_size = 3,20,2,200,0.5
-# 注意力机制类型编号：不使用注意力机制——0，SE——1，CBAM——2，Non-local——3，CA——4
-attention_type = '1'
 
 #####################深度学习最优模型ROC曲线，最优模型预测#######################
-# 模型类型：SVM，MLP，CNN2D，CNN3D，LSTM，Conv-LSTM/Conv-Attention-LSTM
+# 模型类型：SVM，CNN2D，LSTM，Conv-SE-LSTM
 model_type = 'Conv-SE-LSTM'
 # 最优模型保存路径
 save_model_dir = "F:/fenlei\chuanzang_creep_landslides\landslide_dataset\model\IGR_conv_lstm_207"
@@ -97,6 +54,6 @@ multi_num = 9
 
 ######################################多个模型绘制ROC曲线##########################################
 # 需要绘制的各模型名称
-model_type=['SVM','MLP','CNN2D','CNN3D','LSTM','Conv-LSTM','Conv-SE-LSTM']
+model_type=['SVM','CNN2D','LSTM',,'Conv-SE-LSTM']
 # 各最优模型test_result_txt路径，与名称对应
 txt=['\SVM_test_result_txt.txt','/test_result_txt.txt','/test_result_txt.txt','/test_result_txt.txt','/test_result_txt.txt','/test_result_txt.txt','/test_result_txt.txt']
