@@ -116,7 +116,7 @@ def SVM(data_root_path,model_save_dir,row_patch_size,col_patch_size,channel,gamm
         test_acc = (dataNum - errorCount) / dataNum
     print("训练集预测错的数据个数\t%d\n精度为%f" % (errorCount1, (dataNum1 - errorCount1) / dataNum1))
     train_acc = (dataNum1 - errorCount1) / dataNum1
-    con_mat, accuracy, precision, recall, f1, RMSE, kappa, roc_auc, fpr, tpr = roc_s.evaluate_index(labels, result, pred)
+    con_mat, accuracy, precision, recall, f1, roc_auc, fpr, tpr = roc_s.evaluate_index(labels, result, pred)
     evaluate_txt = model_save_dir + '/evaluate_result.txt'
     with open(evaluate_txt, "w") as f:
         pass
